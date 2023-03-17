@@ -1,9 +1,9 @@
-.header {
+.header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  &-nav {
+  .header-nav {
     display: flex;
     justify-content: flex-end;
     gap: 20px;

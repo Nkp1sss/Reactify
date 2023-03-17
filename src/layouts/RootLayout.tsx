@@ -8,11 +8,7 @@ class RootLayout extends React.Component {
     return (
       <>
         <HeaderWithTitle />
-        <main>
-          <div className="container">
-            <Outlet />
-          </div>
-        </main>
+        <Outlet />
       </>
     );
   }

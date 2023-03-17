@@ -18,11 +18,13 @@ class Header extends React.Component<THeaderProps> {
   render() {
     return (
       <header className="header">
-        <h3>{this.props.title}</h3>
-        <nav className="header-nav nav">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/about">About</NavLink>
-        </nav>
+        <div className="container">
+          <h3>{this.props.title}</h3>
+          <nav className="header-nav nav">
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/about">About</NavLink>
+          </nav>
+        </div>
       </header>
     );
   }

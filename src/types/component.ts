@@ -1,4 +1,4 @@
-export type TSearchBarProps = {};
+// export type TSearchBarProps = {};
 
 export type TSearchBarState = {
   inputValue: string;
