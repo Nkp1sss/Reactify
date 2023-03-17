@@ -1,11 +1,8 @@
 import './Header.scss';
 
 import React from 'react';
+import { THeaderProps } from '../types/component';
 import { NavLink, useLocation } from 'react-router-dom';
-
-export type THeaderProps = {
-  title: string;
-};
 
 enum Title {
   HOME = 'Home',
