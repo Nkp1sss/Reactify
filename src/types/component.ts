@@ -6,6 +6,12 @@ export type THeaderProps = {
   title: string;
 };
 
+export interface ILinks {
+  instagram?: string;
+  facebook?: string;
+  twitter?: string;
+}
+
 export type TPeople = {
   id: number;
   name: string;
