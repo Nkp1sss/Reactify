@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Card from '../components/Card';
+import Cards from '../components/cards/Cards';
 import SearchBar from '../components/SearchBar';
 
 class Home extends React.Component {
@@ -9,7 +9,7 @@ class Home extends React.Component {
       <main className="home">
         <div className="container">
           <SearchBar />
-          <Card />
+          <Cards />
         </div>
       </main>
     );
