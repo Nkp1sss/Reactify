@@ -15,25 +15,26 @@ class Card extends React.Component<TPeople> {
       { name: 'twitter', logo: twitterLogo },
     ];
 
+    const socialLinksList = socialLinks.map(
+      (link, index) =>
+        this.props[link.name as keyof ILinks] && (
+          <a key={index} href={this.props[link.name as keyof ILinks]}>
+            <img
+              src={link.logo}
+              className={`${link.name}-logo`}
+              width="32px"
+              height="32px"
+              alt={`${link.name} logo`}
+            />
+          </a>
+        )
+    );
+
     return (
-      <div className="card">
+      <div className="card" data-testid={`test-${this.props.id}`}>
         <img className="photo" src={this.props.photo} alt="picture" />
         <PersonInfo {...this.props} />
-        <div className="icons">
-          {socialLinks.map((link) =>
-            this.props[link.name as keyof ILinks] ? (
-              <a key={this.props.id} href={this.props[link.name as keyof ILinks]}>
-                <img
-                  src={link.logo}
-                  className={`${link.name}-logo`}
-                  width="32px"
-                  height="32px"
-                  alt={`${link.name} logo`}
-                />
-              </a>
-            ) : null
-          )}
-        </div>
+        <div className="icons">{socialLinksList}</div>
       </div>
     );
   }

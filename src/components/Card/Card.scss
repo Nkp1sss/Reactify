@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Coming+Soon&family=Sono:wght@300;400;500;700;800&display=swap');
 
-.cards {
-  display: flex;
-  justify-content: center;
-  flex-flow: row wrap;
-  gap: 15px;
-}
-
 .card {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   max-width: 340px;

@@ -1,9 +1,10 @@
 import './Header.scss';
 
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import { THeaderProps } from '../../types/component';
+import NavBar from '../NavBar/NavBar';
 
 enum Title {
   HOME = 'Home',
@@ -21,10 +22,7 @@ class Header extends React.Component<THeaderProps> {
       <header className="header">
         <div className="container">
           <h3>{this.props.title}</h3>
-          <nav className="header-nav nav">
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
-          </nav>
+          <NavBar />
         </div>
       </header>
     );

@@ -1,3 +1,5 @@
+import './Cards.scss';
+
 import React from 'react';
 
 import peoples from '../../data/data';
