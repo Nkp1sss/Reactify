@@ -1,7 +1,7 @@
 import React from 'react';
 
 import peoples from '../../data/data';
-import Card from './Card';
+import Card from '../Card/Card';
 
 class Cards extends React.Component {
   constructor(props: object) {
