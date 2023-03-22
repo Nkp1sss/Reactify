@@ -1,12 +1,12 @@
 import React from 'react';
+import Form from '../components/Form/Form';
 
 class Forms extends React.Component {
   render() {
     return (
       <main className="forms">
         <div className="container">
-          <h1>It is forms page</h1>
-          <p>This page tells you about forms.</p>
+          <Form />
         </div>
       </main>
     );
