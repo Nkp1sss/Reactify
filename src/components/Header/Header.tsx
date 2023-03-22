@@ -9,6 +9,7 @@ import NavBar from '../NavBar/NavBar';
 enum Title {
   HOME = 'Home',
   ABOUT = 'About',
+  FORMS = 'Forms',
   NOTFOUND = 'Not found',
 }
 

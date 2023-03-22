@@ -9,6 +9,7 @@ import {
 import RootLayout from './layouts/RootLayout';
 import Home from './pages/Home';
 import About from './pages/About';
+import Forms from './pages/Forms';
 import Notfound from './pages/Notfound';
 
 const router = createBrowserRouter(
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
+      <Route path="forms" element={<Forms />} />
       <Route path="*" element={<Notfound />} />
     </Route>
   )
