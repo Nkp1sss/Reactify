@@ -64,9 +64,6 @@ class Form extends React.Component {
           </div>
         </fieldset>
         <fieldset>
-          {/* <label htmlFor="image">
-            <input type="file" name="image" id="image" title="123" />
-          </label> */}
           <label htmlFor="myFile">Выбрать файл</label>
           <input type="file" id="myFile" />
         </fieldset>
