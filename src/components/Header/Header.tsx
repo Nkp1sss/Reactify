@@ -41,6 +41,9 @@ function HeaderWithTitle() {
     case '/about':
       title = Title.ABOUT;
       break;
+    case '/forms':
+      title = Title.FORMS;
+      break;
     default:
       title = Title.NOTFOUND;
   }
