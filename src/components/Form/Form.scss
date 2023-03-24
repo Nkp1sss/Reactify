@@ -4,12 +4,18 @@ form {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  justify-content: center;
 
   fieldset {
     border: 2px solid #ddd;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 20px;
+    width: 45%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   label {
@@ -24,8 +30,9 @@ form {
   label[for="myFile"] {
     display: inline-block;
     padding: 6px 12px;
-    background-color: #337ab7;
-    color: #fff;
+    background-color: #f9f9f9;;
+    color: black;
+    font-weight: 500;
     border-radius: 4px;
     cursor: pointer;
   }

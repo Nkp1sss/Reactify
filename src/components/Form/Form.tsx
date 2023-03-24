@@ -3,6 +3,11 @@ import './Form.scss';
 import React from 'react';
 
 class Form extends React.Component {
+  submitHandler(e: React.SyntheticEvent<HTMLInputElement>) {
+    console.log('123');
+    e.preventDefault();
+  }
+
   render() {
     return (
       <form className="form">
@@ -15,13 +20,13 @@ class Form extends React.Component {
           <input type="date" className="input-date" name="birthday" id="birthday" />
         </fieldset>
         <fieldset>
-          <label htmlFor="cities">Choose your favorite city:</label>
+          <label htmlFor="cities">Your favorite city:</label>
           <select name="city" id="cities">
-            <option value="paris">Париж</option>
-            <option value="newyork">Нью-Йорк</option>
-            <option value="rome">Рим</option>
-            <option value="barcelona">Барселона</option>
-            <option value="sydney">Сидней</option>
+            <option value="paris">Paris</option>
+            <option value="newyork">New York</option>
+            <option value="rome">Rome</option>
+            <option value="barcelona">Barcelona</option>
+            <option value="sydney">Sydney</option>
           </select>
         </fieldset>
         <fieldset>
@@ -46,26 +51,36 @@ class Form extends React.Component {
           </div>
         </fieldset>
         <fieldset>
-          <label>Choose your gender:</label>
-          <div>
-            <label>
-              <input type="radio" name="gender" value="male" /> Male
-            </label>
-          </div>
-          <div>
-            <label>
-              <input type="radio" name="gender" value="female" /> Female
-            </label>
-          </div>
-          <div>
-            <label>
-              <input type="radio" name="gender" value="other" /> Other
-            </label>
+          <label>Your gender:</label>
+          <div className="gender-wrapper">
+            <div>
+              <label>
+                <input type="radio" name="gender" value="male" /> Male
+              </label>
+            </div>
+            <div>
+              <label>
+                <input type="radio" name="gender" value="female" /> Female
+              </label>
+            </div>
+            <div>
+              <label>
+                <input type="radio" name="gender" value="other" /> Other
+              </label>
+            </div>
           </div>
         </fieldset>
         <fieldset>
-          <label htmlFor="myFile">Выбрать файл</label>
-          <input type="file" id="myFile" />
+          <label htmlFor="myFile">Choise a file</label>
+          <input type="file" id="myFile" className="button" />
+        </fieldset>
+        <fieldset>
+          <input
+            type="submit"
+            id="submit"
+            className="sumbit-btn button"
+            onClick={(e) => this.submitHandler(e)}
+          />
         </fieldset>
       </form>
     );
