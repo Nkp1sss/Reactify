@@ -2,17 +2,10 @@ import './Form.scss';
 
 import React from 'react';
 
-type TFormProps = {
-  test?: string;
-};
+import { TFormCard } from '../../types/component';
 
-type TObjectWithValues = {
-  fullname: string;
-  birthday: string;
-  favoriteCity: string;
-  picture: string;
-  permission: boolean;
-  gender: string;
+type TFormProps = {
+  addCard: (card: TFormCard) => void;
 };
 
 class Form extends React.Component<TFormProps> {
@@ -27,7 +20,6 @@ class Form extends React.Component<TFormProps> {
 
   constructor(props: TFormProps) {
     super(props);
-
     this.form = React.createRef();
     this.textInput = React.createRef();
     this.dateInput = React.createRef();
@@ -44,7 +36,7 @@ class Form extends React.Component<TFormProps> {
     const isMale = this.maleRadioInput.current?.checked;
     const isFemale = this.femaleRadioInput.current?.checked;
 
-    const object: TObjectWithValues = {
+    const object: TFormCard = {
       fullname: this.textInput.current?.value || '',
       birthday: this.dateInput.current?.value || '',
       favoriteCity: this.selectInput.current?.value || '',
@@ -53,7 +45,9 @@ class Form extends React.Component<TFormProps> {
       gender: isMale ? 'male' : isFemale ? 'female' : '',
     };
 
-    console.log(object);
+    console.log(this.fileInput.current?.value, object.picture);
+    this.props.addCard(object);
+    this.form.current?.reset();
   }
 
   render() {

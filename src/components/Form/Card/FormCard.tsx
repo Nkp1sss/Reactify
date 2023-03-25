@@ -2,12 +2,18 @@ import './FormCard.scss';
 
 import React from 'react';
 
-class FormCard extends React.Component {
+import { TFormCard } from '../../../types/component';
+
+class FormCard extends React.Component<TFormCard> {
+  constructor(props: TFormCard) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="form-card-wrapper">
         <div className="card-header">
-          <div className="card-fullname">Nikita Kovalev</div>
+          <div className="card-fullname">{this.props.fullname}</div>
           <img
             className="card-image"
             src="https://fikiwiki.com/uploads/posts/2022-02/1645058018_5-fikiwiki-com-p-kartinki-s-khoroshim-kachestvom-6.jpg"
@@ -15,11 +21,12 @@ class FormCard extends React.Component {
           />
         </div>
         <div className="card-footer">
-          <div className="card-city">Favorite city: Minsk</div>
-          <div className="card-birthday">Birthday: 19.11.2002</div>
-          <div className="card-gender">Gender: male</div>
+          <div className="card-city">Favorite city: {this.props.favoriteCity}</div>
+          <div className="card-birthday">Birthday: {this.props.birthday}</div>
+          <div className="card-gender">Gender: {this.props.gender}</div>
           <div className="card-permission">
-            I want to receive notifications about promo, sales, etc.
+            I {this.props.permission ? '' : "don't"} want to receive notifications about promo,
+            sales, etc.
           </div>
         </div>
       </div>

@@ -3,17 +3,21 @@ import './FormCards.scss';
 import React from 'react';
 
 import FormCard from '../Card/FormCard';
+import { TFormCard } from '../../../types/component';
 
-class FormCards extends React.Component {
+type TFormProps = { formCards: TFormCard[] };
+
+class FormCards extends React.Component<TFormProps> {
+  constructor(props: TFormProps) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="form-cards">
-        <FormCard />
-        <FormCard />
-        <FormCard />
-        {/* {peoples.map((person) => (
-          <Card key={person.id} {...person} />
-        ))} */}
+        {this.props.formCards.map((card, i) => (
+          <FormCard key={i} {...card} />
+        ))}
       </div>
     );
   }
