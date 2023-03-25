@@ -1,4 +1,5 @@
 import React from 'react';
+import FormCards from '../components/Form/Cards/FormCards';
 import Form from '../components/Form/Form';
 
 class Forms extends React.Component {
@@ -7,6 +8,7 @@ class Forms extends React.Component {
       <main className="forms">
         <div className="container">
           <Form />
+          <FormCards />
         </div>
       </main>
     );

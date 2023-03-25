@@ -5,6 +5,10 @@ form {
   justify-content: space-around;
   flex-wrap: wrap;
   justify-content: center;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 10px 5px 0;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 
   fieldset {
     border: 2px solid #ddd;
