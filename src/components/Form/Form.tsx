@@ -10,10 +10,13 @@ type TFormProps = {
 
 class Form extends React.Component<TFormProps> {
   private form: React.RefObject<HTMLFormElement>;
+
   private textInput: React.RefObject<HTMLInputElement>;
   private dateInput: React.RefObject<HTMLInputElement>;
   private selectInput: React.RefObject<HTMLSelectElement>;
   private fileInput: React.RefObject<HTMLInputElement>;
+  private imageLink: string;
+
   private checkboxInput: React.RefObject<HTMLInputElement>;
   private maleRadioInput: React.RefObject<HTMLInputElement>;
   private femaleRadioInput: React.RefObject<HTMLInputElement>;
@@ -21,10 +24,13 @@ class Form extends React.Component<TFormProps> {
   constructor(props: TFormProps) {
     super(props);
     this.form = React.createRef();
+
     this.textInput = React.createRef();
     this.dateInput = React.createRef();
     this.selectInput = React.createRef();
     this.fileInput = React.createRef();
+    this.imageLink = '';
+
     this.checkboxInput = React.createRef();
     this.maleRadioInput = React.createRef();
     this.femaleRadioInput = React.createRef();
@@ -40,14 +46,26 @@ class Form extends React.Component<TFormProps> {
       fullname: this.textInput.current?.value || '',
       birthday: this.dateInput.current?.value || '',
       favoriteCity: this.selectInput.current?.value || '',
-      picture: this.fileInput.current?.value || '',
+      picture: this.imageLink ? this.imageLink : '',
       permission: this.checkboxInput.current?.checked || false,
       gender: isMale ? 'male' : isFemale ? 'female' : '',
     };
 
-    console.log(this.fileInput.current?.value, object.picture);
     this.props.addCard(object);
+
+    this.imageLink = '';
     this.form.current?.reset();
+  }
+
+  fileInputHandler(e: React.SyntheticEvent<HTMLInputElement>) {
+    const target = e.target as HTMLInputElement;
+    if (target.files) {
+      this.imageLink = URL.createObjectURL(target.files[0]);
+    }
+  }
+
+  isValidate() {
+    
   }
 
   render() {
@@ -100,8 +118,15 @@ class Form extends React.Component<TFormProps> {
           </div>
         </fieldset>
         <fieldset>
-          <label htmlFor="myFile">Choise a file</label>
-          <input className="button" type="file" id="myFile" ref={this.fileInput} />
+          <label className="input-file">
+            <input
+              type="file"
+              name="file"
+              ref={this.fileInput}
+              onChange={(e) => this.fileInputHandler(e)}
+            />
+            <span>Выберите файл</span>
+          </label>
         </fieldset>
         <fieldset>
           <label>

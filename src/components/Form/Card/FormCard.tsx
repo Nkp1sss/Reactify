@@ -14,11 +14,7 @@ class FormCard extends React.Component<TFormCard> {
       <div className="form-card-wrapper">
         <div className="card-header">
           <div className="card-fullname">{this.props.fullname}</div>
-          <img
-            className="card-image"
-            src="https://fikiwiki.com/uploads/posts/2022-02/1645058018_5-fikiwiki-com-p-kartinki-s-khoroshim-kachestvom-6.jpg"
-            alt="picture"
-          />
+          <img className="card-image" src={this.props.picture} alt="picture" />
         </div>
         <div className="card-footer">
           <div className="card-city">Favorite city: {this.props.favoriteCity}</div>
