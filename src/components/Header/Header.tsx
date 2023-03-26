@@ -7,7 +7,7 @@ import NavBar from '../NavBar/NavBar';
 import { THeaderProps } from '../../types/component';
 import { HeaderTitle, ROUTES } from '../../constants/appSettings';
 
-class Header extends React.Component<THeaderProps> {
+export class Header extends React.Component<THeaderProps> {
   constructor(props: THeaderProps) {
     super(props);
   }

@@ -167,7 +167,7 @@ class Form extends React.Component<TFormProps, TFormState> {
               ref={this.fileInput}
               onChange={(e) => this.fileInputHandler(e)}
             />
-            <span>Выберите файл</span>
+            <span>Select a file</span>
           </label>
           {this.fileInput.current && this.fileInput.current.validationMessage && (
             <div className="error-message">{this.fileInput.current.validationMessage}</div>

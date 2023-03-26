@@ -7,10 +7,10 @@ import {
 } from 'react-router-dom';
 
 import RootLayout from './layouts/RootLayout';
-import Home from './pages/Home';
-import About from './pages/About';
-import Forms from './pages/Forms';
-import Notfound from './pages/Notfound';
+import Home from './pages/Home/Home';
+import About from './pages/About/About';
+import Forms from './pages/Forms/Forms';
+import Notfound from './pages/Notfound/Notfound';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

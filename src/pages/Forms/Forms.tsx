@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Form from '../components/Form/Form';
-import FormCards from '../components/Form/Cards/FormCards';
-import { TFormCard } from '../types/component';
+import Form from '../../components/Form/Form';
+import FormCards from '../../components/Form/Cards/FormCards';
+import { TFormCard } from '../../types/component';
 
 type TFormProps = { temp?: string };
 type TFormState = { formCards: TFormCard[] };
