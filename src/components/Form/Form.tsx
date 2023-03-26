@@ -8,50 +8,43 @@ type TFormProps = {
   addCard: (card: TFormCard) => void;
 };
 
-class Form extends React.Component<TFormProps> {
-  private form: React.RefObject<HTMLFormElement>;
+type TFormState = {
+  isValidate: boolean;
+};
 
-  private textInput: React.RefObject<HTMLInputElement>;
-  private dateInput: React.RefObject<HTMLInputElement>;
-  private selectInput: React.RefObject<HTMLSelectElement>;
-  private fileInput: React.RefObject<HTMLInputElement>;
-  private imageLink: string;
+class Form extends React.Component<TFormProps, TFormState> {
+  private form = React.createRef<HTMLFormElement>();
+  private textInput = React.createRef<HTMLInputElement>();
+  private dateInput = React.createRef<HTMLInputElement>();
+  private selectInput = React.createRef<HTMLSelectElement>();
+  private fileInput = React.createRef<HTMLInputElement>();
+  private imageLink = '';
 
-  private checkboxInput: React.RefObject<HTMLInputElement>;
-  private maleRadioInput: React.RefObject<HTMLInputElement>;
-  private femaleRadioInput: React.RefObject<HTMLInputElement>;
-
-  constructor(props: TFormProps) {
-    super(props);
-    this.form = React.createRef();
-
-    this.textInput = React.createRef();
-    this.dateInput = React.createRef();
-    this.selectInput = React.createRef();
-    this.fileInput = React.createRef();
-    this.imageLink = '';
-
-    this.checkboxInput = React.createRef();
-    this.maleRadioInput = React.createRef();
-    this.femaleRadioInput = React.createRef();
-  }
+  private checkboxInput = React.createRef<HTMLInputElement>();
+  private maleRadioInput = React.createRef<HTMLInputElement>();
+  private femaleRadioInput = React.createRef<HTMLInputElement>();
 
   submitHandler(e: React.SyntheticEvent<HTMLInputElement>) {
     e.preventDefault();
 
-    const isMale = this.maleRadioInput.current?.checked;
-    const isFemale = this.femaleRadioInput.current?.checked;
+    if (!this.isValidate()) {
+      return;
+    }
 
-    const object: TFormCard = {
+    const card: TFormCard = {
       fullname: this.textInput.current?.value || '',
       birthday: this.dateInput.current?.value || '',
       favoriteCity: this.selectInput.current?.value || '',
       picture: this.imageLink ? this.imageLink : '',
       permission: this.checkboxInput.current?.checked || false,
-      gender: isMale ? 'male' : isFemale ? 'female' : '',
+      gender: this.maleRadioInput.current?.checked
+        ? 'male'
+        : this.femaleRadioInput.current?.checked
+        ? 'female'
+        : '',
     };
 
-    this.props.addCard(object);
+    this.props.addCard(card);
 
     this.imageLink = '';
     this.form.current?.reset();
@@ -65,21 +58,64 @@ class Form extends React.Component<TFormProps> {
   }
 
   isValidate() {
-    
+    let isValidForm = true;
+
+    console.log(this.textInput.current?.value.split(' ').length);
+    if (!this.textInput.current?.value) {
+      this.textInput.current?.setCustomValidity('Must be filled in');
+      isValidForm = false;
+    } else if (this.textInput.current?.value.split(' ').length !== 2) {
+      this.textInput.current?.setCustomValidity('Fullname must be two words');
+      isValidForm = false;
+    } else {
+      this.textInput.current?.setCustomValidity('');
+    }
+
+    if (!this.dateInput.current?.value) {
+      this.dateInput.current?.setCustomValidity('Must be filled in');
+      isValidForm = false;
+    } else {
+      this.dateInput.current?.setCustomValidity('');
+    }
+
+    if (!(this.maleRadioInput.current?.checked || this.femaleRadioInput.current?.checked)) {
+      this.femaleRadioInput.current?.setCustomValidity('Must be filled in');
+      isValidForm = false;
+    } else {
+      this.femaleRadioInput.current?.setCustomValidity('');
+    }
+
+    if (!this.fileInput.current?.value) {
+      this.fileInput.current?.setCustomValidity('Must be filled in');
+      isValidForm = false;
+    } else {
+      this.fileInput.current?.setCustomValidity('');
+    }
+
+    this.setState({
+      isValidate: isValidForm,
+    });
+
+    return isValidForm;
   }
 
   render() {
     return (
       <form className="form" ref={this.form}>
         <fieldset>
-          <label htmlFor="fullname">Fullname:</label>
-          <input
-            type="text"
-            className="input-text"
-            name="fullname"
-            id="fullname"
-            ref={this.textInput}
-          />
+          <div>
+            <label htmlFor="fullname">Fullname:</label>
+            <input
+              type="text"
+              className="input-text"
+              name="fullname"
+              id="fullname"
+              ref={this.textInput}
+            />
+          </div>
+          {this.textInput.current && this.textInput.current.validationMessage && (
+            <div className="error-message">{this.textInput.current.validationMessage}</div>
+          )}
         </fieldset>
         <fieldset>
           <label htmlFor="birthday">Birthday:</label>
@@ -90,6 +126,9 @@ class Form extends React.Component<TFormProps> {
             id="birthday"
             ref={this.dateInput}
           />
+          {this.dateInput.current && this.dateInput.current.validationMessage && (
+            <div className="error-message">{this.dateInput.current.validationMessage}</div>
+          )}
         </fieldset>
         <fieldset>
           <label htmlFor="cities">Your favorite city:</label>
@@ -116,6 +155,9 @@ class Form extends React.Component<TFormProps> {
               </label>
             </div>
           </div>
+          {this.femaleRadioInput.current && this.femaleRadioInput.current.validationMessage && (
+            <div className="error-message">{this.femaleRadioInput.current.validationMessage}</div>
+          )}
         </fieldset>
         <fieldset>
           <label className="input-file">
@@ -127,6 +169,9 @@ class Form extends React.Component<TFormProps> {
             />
             <span>Выберите файл</span>
           </label>
+          {this.fileInput.current && this.fileInput.current.validationMessage && (
+            <div className="error-message">{this.fileInput.current.validationMessage}</div>
+          )}
         </fieldset>
         <fieldset>
           <label>

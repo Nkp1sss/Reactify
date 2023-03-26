@@ -5,10 +5,10 @@ import React from 'react';
 import FormCard from '../Card/FormCard';
 import { TFormCard } from '../../../types/component';
 
-type TFormProps = { formCards: TFormCard[] };
+type TFormCardsProps = { formCards: TFormCard[] };
 
-class FormCards extends React.Component<TFormProps> {
-  constructor(props: TFormProps) {
+class FormCards extends React.Component<TFormCardsProps> {
+  constructor(props: TFormCardsProps) {
     super(props);
   }
 
