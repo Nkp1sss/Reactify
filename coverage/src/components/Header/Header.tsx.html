@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/50</span>
+                <span class='fraction'>0/48</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/50</span>
+                <span class='fraction'>0/48</span>
             </div>
         
             
@@ -111,11 +111,7 @@
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -168,16 +164,11 @@
 <span class="cstat-no" title="statement not covered" >import React from 'react';</span>
 <span class="cstat-no" title="statement not covered" >import { useLocation } from 'react-router-dom';</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >import { THeaderProps } from '../../types/component';</span>
 <span class="cstat-no" title="statement not covered" >import NavBar from '../NavBar/NavBar';</span>
+<span class="cstat-no" title="statement not covered" >import { THeaderProps } from '../../types/component';</span>
+<span class="cstat-no" title="statement not covered" >import { HeaderTitle, ROUTES } from '../../constants/appSettings';</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >enum Title {</span>
-<span class="cstat-no" title="statement not covered" >  HOME = 'Home',</span>
-<span class="cstat-no" title="statement not covered" >  ABOUT = 'About',</span>
-<span class="cstat-no" title="statement not covered" >  NOTFOUND = 'Not found',</span>
-<span class="cstat-no" title="statement not covered" >}</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >class Header extends React.Component&lt;THeaderProps&gt; {</span>
+<span class="cstat-no" title="statement not covered" >export class Header extends React.Component&lt;THeaderProps&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  constructor(props: THeaderProps) {</span>
 <span class="cstat-no" title="statement not covered" >    super(props);</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
@@ -199,14 +190,17 @@
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  let title;</span>
 <span class="cstat-no" title="statement not covered" >  switch (location.pathname) {</span>
-<span class="cstat-no" title="statement not covered" >    case '/':</span>
-<span class="cstat-no" title="statement not covered" >      title = Title.HOME;</span>
+<span class="cstat-no" title="statement not covered" >    case ROUTES.HOME:</span>
+<span class="cstat-no" title="statement not covered" >      title = HeaderTitle.HOME;</span>
 <span class="cstat-no" title="statement not covered" >      break;</span>
-<span class="cstat-no" title="statement not covered" >    case '/about':</span>
-<span class="cstat-no" title="statement not covered" >      title = Title.ABOUT;</span>
+<span class="cstat-no" title="statement not covered" >    case ROUTES.ABOUT:</span>
+<span class="cstat-no" title="statement not covered" >      title = HeaderTitle.ABOUT;</span>
+<span class="cstat-no" title="statement not covered" >      break;</span>
+<span class="cstat-no" title="statement not covered" >    case ROUTES.FORMS:</span>
+<span class="cstat-no" title="statement not covered" >      title = HeaderTitle.FORMS;</span>
 <span class="cstat-no" title="statement not covered" >      break;</span>
 <span class="cstat-no" title="statement not covered" >    default:</span>
-<span class="cstat-no" title="statement not covered" >      title = Title.NOTFOUND;</span>
+<span class="cstat-no" title="statement not covered" >      title = HeaderTitle.NOTFOUND;</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  return &lt;Header title={title} /&gt;;</span>
@@ -220,7 +214,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-19T13:10:03.459Z
+                at 2023-03-26T17:36:43.189Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

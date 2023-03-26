@@ -23,3 +23,12 @@ export type TPeople = {
   twitter?: string;
   photo: string;
 };
+
+export type TFormCard = {
+  fullname: string;
+  birthday: string;
+  favoriteCity: string;
+  picture: string;
+  permission: boolean;
+  gender: string;
+};
