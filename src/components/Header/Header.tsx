@@ -6,7 +6,7 @@ import NavBar from '../NavBar/NavBar';
 import { THeaderProps } from '../../types/component';
 import { HeaderTitle, ROUTES } from '../../constants/appSettings';
 
-function Header(props: THeaderProps) {
+export function Header(props: THeaderProps) {
   return (
     <header className="header">
       <div className="container">
