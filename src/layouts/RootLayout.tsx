@@ -5,8 +5,12 @@ import HeaderWithTitle from '../components/Header/Header';
 function RootLayout() {
   return (
     <>
-      <HeaderWithTitle />
-      <Outlet />
+      <div data-testid="header-with-title">
+        <HeaderWithTitle />
+      </div>
+      <div data-testid="outlet">
+        <Outlet />
+      </div>
     </>
   );
 }

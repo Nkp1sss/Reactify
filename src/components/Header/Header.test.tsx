@@ -3,7 +3,6 @@ import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router, MemoryRouter } from 'react-router-dom';
 
 import HeaderWithTitle, { Header } from './Header';
-import { HeaderTitle, ROUTES } from '../../constants/appSettings';
 
 describe('Header', () => {
   it('Renders Header correctly', () => {
@@ -21,7 +20,7 @@ describe('Header', () => {
 describe('HeaderWithTitle', () => {
   it('Renders header with about title when location pathname is not found', () => {
     const { getByText } = render(
-      <MemoryRouter initialEntries={['123']}>
+      <MemoryRouter initialEntries={['notFound']}>
         <HeaderWithTitle />
       </MemoryRouter>
     );
