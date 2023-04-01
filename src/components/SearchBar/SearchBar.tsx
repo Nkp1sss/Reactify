@@ -3,7 +3,7 @@ import './SearchBar.scss';
 import React, { useEffect, useRef, useState } from 'react';
 
 function SearchBar() {
-  const [inputValue, setInputValue] = useState(localStorage.getItem('savedValue') || '');
+  const [inputValue, setInputValue] = useState(() => localStorage.getItem('savedValue') || '');
   const actualRef = useRef<string>();
 
   useEffect(() => {
