@@ -1,17 +1,18 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
 
 import HeaderWithTitle from '../components/Header/Header';
 
-class RootLayout extends React.Component {
-  render() {
-    return (
-      <>
+function RootLayout() {
+  return (
+    <>
+      <div data-testid="header-with-title">
         <HeaderWithTitle />
+      </div>
+      <div data-testid="outlet">
         <Outlet />
-      </>
-    );
-  }
+      </div>
+    </>
+  );
 }
 
 export default RootLayout;

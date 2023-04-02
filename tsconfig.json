@@ -20,6 +20,6 @@
   "include": [
     "vite.config.ts",
     "src"
-, "tests"  ],
+, "tests", "src/types/component.test/.ts"  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

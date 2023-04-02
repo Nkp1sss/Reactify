@@ -1,30 +1,23 @@
 import './Header.scss';
 
-import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 import NavBar from '../NavBar/NavBar';
 import { THeaderProps } from '../../types/component';
 import { HeaderTitle, ROUTES } from '../../constants/appSettings';
 
-export class Header extends React.Component<THeaderProps> {
-  constructor(props: THeaderProps) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <header className="header">
-        <div className="container">
-          <h3>{this.props.title}</h3>
-          <NavBar />
-        </div>
-      </header>
-    );
-  }
+export function Header(props: THeaderProps) {
+  return (
+    <header className="header">
+      <div className="container">
+        <h3>{props.title}</h3>
+        <NavBar />
+      </div>
+    </header>
+  );
 }
 
-function HeaderWithTitle() {
+export default function HeaderWithTitle() {
   const location = useLocation();
 
   let title;
@@ -44,5 +37,3 @@ function HeaderWithTitle() {
 
   return <Header title={title} />;
 }
-
-export default HeaderWithTitle;

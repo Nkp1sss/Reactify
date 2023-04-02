@@ -1,54 +1,35 @@
 import './SearchBar.scss';
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import { TSearchBarState } from '../../types/component';
+function SearchBar() {
+  const [inputValue, setInputValue] = useState(() => localStorage.getItem('savedValue') || '');
+  const actualRef = useRef<string>();
 
-class SearchBar extends React.Component<object, TSearchBarState> {
-  constructor(props: object) {
-    super(props);
+  useEffect(() => {
+    actualRef.current = inputValue;
+  }, [inputValue]);
 
-    this.state = {
-      inputValue: localStorage.getItem('savedValue') || '',
+  useEffect(() => {
+    return function () {
+      if (actualRef.current) {
+        localStorage.setItem('savedValue', actualRef.current);
+      }
     };
+  }, []);
 
-    this.changeHandler = this.changeHandler.bind(this);
-  }
-
-  componentDidMount(): void {
-    const savedValue = localStorage.getItem('savedValue');
-
-    if (savedValue) {
-      this.setState({
-        inputValue: savedValue,
-      });
-    }
-  }
-
-  componentWillUnmount(): void {
-    localStorage.setItem('savedValue', this.state.inputValue);
-  }
-
-  changeHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({
-      inputValue: e.target.value,
-    });
-  }
-
-  render() {
-    return (
-      <div className="search__container">
-        <p className="search__title">Go ahead, hover over search</p>
-        <input
-          className="search__input"
-          type="text"
-          placeholder="Search"
-          value={this.state.inputValue}
-          onChange={this.changeHandler}
-        />
-      </div>
-    );
-  }
+  return (
+    <div className="search__container">
+      <p className="search__title">Go ahead, hover over search</p>
+      <input
+        className="search__input"
+        type="text"
+        placeholder="Search"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+    </div>
+  );
 }
 
 export default SearchBar;
