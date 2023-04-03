@@ -26,6 +26,13 @@ function Form(props: TFormProps) {
     }
   }
 
+  function birthdayValidate(value: string) {
+    console.log(value);
+    console.log(new Date().toLocaleString());
+
+    return new Date(value) < new Date();
+  }
+
   const onSubmit = handleSubmit(function (card, event) {
     event?.preventDefault();
 
@@ -39,7 +46,7 @@ function Form(props: TFormProps) {
   });
 
   return (
-    <form className="form">
+    <form className="form" data-testid="form">
       <fieldset>
         <div>
           <label htmlFor="fullname">Fullname:</label>
@@ -62,11 +69,16 @@ function Form(props: TFormProps) {
         <label htmlFor="birthday">Birthday:</label>
         <input
           type="date"
-          {...register('birthday', { required: 'Must be filled in' })}
+          {...register('birthday', {
+            required: 'Must be filled in',
+            validate: birthdayValidate,
+          })}
           className="input-date"
         />
         {errors.birthday && (
-          <div className="error-message">{errors.birthday.message || 'Error'}</div>
+          <div className="error-message">
+            {errors.birthday.message || "The date must be less than today's date"}
+          </div>
         )}
       </fieldset>
       <fieldset>
