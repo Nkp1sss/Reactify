@@ -26,9 +26,7 @@ function Form(props: TFormProps) {
     }
   }
 
-  function birthdayValidation() {
-    
-  }
+  // function birthdayValidation() {}
 
   const onSubmit = handleSubmit(function (card, event) {
     event?.preventDefault();
@@ -43,7 +41,7 @@ function Form(props: TFormProps) {
   });
 
   return (
-    <form className="form">
+    <form className="form" data-testid="form">
       <fieldset>
         <div>
           <label htmlFor="fullname">Fullname:</label>
