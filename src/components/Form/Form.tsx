@@ -26,6 +26,10 @@ function Form(props: TFormProps) {
     }
   }
 
+  function birthdayValidation() {
+    
+  }
+
   const onSubmit = handleSubmit(function (card, event) {
     event?.preventDefault();
 
