@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.78% </span>
+                <span class="strong">83.68% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>115/131</span>
+                <span class='fraction'>118/141</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/3</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.78% </span>
+                <span class="strong">83.68% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>115/131</span>
+                <span class='fraction'>118/141</span>
             </div>
         
             
@@ -194,7 +194,17 @@
 <a name='L129'></a><a href='#L129'>129</a>
 <a name='L130'></a><a href='#L130'>130</a>
 <a name='L131'></a><a href='#L131'>131</a>
-<a name='L132'></a><a href='#L132'>132</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -223,6 +233,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -264,6 +279,11 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -353,7 +373,12 @@ function Form(props: TFormProps) {
 <span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
-  // function birthdayValidation() {}
+<span class="fstat-no" title="function not covered" >  function birthdayValidate(value: string) {</span>
+<span class="cstat-no" title="statement not covered" >    console.log(value);</span>
+<span class="cstat-no" title="statement not covered" >    console.log(new Date().toLocaleString());</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    return new Date(value) &lt; new Date();</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
   const onSubmit = handleSubmit(function (card, event) {
 <span class="cstat-no" title="statement not covered" >    event?.preventDefault();</span>
@@ -391,11 +416,16 @@ function Form(props: TFormProps) {
         &lt;label htmlFor="birthday"&gt;Birthday:&lt;/label&gt;
         &lt;input
           type="date"
-          {...register('birthday', { required: 'Must be filled in' })}
+          {...register('birthday', {
+            required: 'Must be filled in',
+            validate: birthdayValidate,
+          })}
           className="input-date"
         /&gt;
         {errors.<span class="branch-0 cbranch-no" title="branch not covered" >birthday &amp;&amp; (</span>
-<span class="cstat-no" title="statement not covered" >          &lt;div className="error-message"&gt;{errors.birthday.message || 'Error'}&lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;div className="error-message"&gt;</span>
+<span class="cstat-no" title="statement not covered" >            {errors.birthday.message || "The date must be less than today's date"}</span>
+<span class="cstat-no" title="statement not covered" >          &lt;/div&gt;</span>
         )}
       &lt;/fieldset&gt;
       &lt;fieldset&gt;
@@ -463,7 +493,7 @@ export default Form;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-03T15:17:38.463Z
+                at 2023-04-04T13:09:10.771Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

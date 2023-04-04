@@ -6,7 +6,7 @@ import peoples from '../../data/data';
 
 describe('Cards', () => {
   it('Renders all cards correctly', () => {
-    const { queryAllByTestId } = render(<Cards />);
+    const { queryAllByTestId } = render(<Cards cards={peoples} />);
     const allCards = queryAllByTestId(/test/);
     expect(allCards.length).toBe(peoples.length);
   });
