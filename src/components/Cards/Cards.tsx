@@ -1,12 +1,16 @@
 import './Cards.scss';
 
-import peoples from '../../data/data';
+import { TPeople } from '../../types/component';
 import Card from '../Card/Card';
 
-function Cards() {
+type TCards = {
+  cards: TPeople[];
+};
+
+function Cards(props: TCards) {
   return (
     <div className="cards">
-      {peoples.map((person) => (
+      {props.cards.map((person) => (
         <Card key={person.id} {...person} />
       ))}
     </div>

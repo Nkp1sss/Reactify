@@ -30,7 +30,11 @@ function Card(props: TPeople) {
 
   return (
     <div className="card" data-testid={`test-${props.id}`}>
-      <img className="photo" src={props.photo} alt="picture" />
+      <img
+        className="photo"
+        src={`https://json-server-6d972uqd4-nkp1sss.vercel.app/${props.photo}`}
+        alt="picture"
+      />
       <PersonInfo {...props} />
       <div className="icons">{socialLinksList}</div>
     </div>
