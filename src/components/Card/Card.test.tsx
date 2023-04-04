@@ -6,7 +6,6 @@ import peoples from '../../data/data';
 
 describe('Card', () => {
   it('Renders the card photo correctly', () => {
-    const photoUrl = peoples[0].photo;
     render(<Card {...peoples[0]} />);
     const photoElement = screen.getByAltText('picture');
     expect(photoElement).toBeInTheDocument();
