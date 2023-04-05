@@ -1,5 +1,11 @@
-function Loader() {
-  return <div className="loader">Loading...</div>
+import './Loader.scss';
+
+function CustomLoader() {
+  return (
+    <div className="loader-wrapper">
+      <div className="loader-content">Loading...</div>
+    </div>
+  );
 }
 
-export default Loader;
+export default CustomLoader;

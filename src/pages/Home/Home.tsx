@@ -1,5 +1,6 @@
-import Cards from '../../components/Cards/Cards';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import Cards from '../../components/Cards/Cards';
+import CustomLoader from '../../components/Loader/Loader';
 
 import { useEffect, useState } from 'react';
 
@@ -9,16 +10,21 @@ import { getPeoples } from '../../api/api';
 function Home() {
   const [searchValue, setSearchValue] = useState(() => localStorage.getItem('savedValue') || '');
   const [cards, setCards] = useState<TPeople[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    getPeoples(searchValue).then((data) => setCards(data));
+    setIsLoading(true);
+    getPeoples(searchValue).then((data) => {
+      setCards(data);
+      setIsLoading(false);
+    });
   }, [searchValue]);
 
   return (
     <main className="home">
       <div className="container">
         <SearchBar changeSearchValue={(value: string) => setSearchValue(value)} />
-        <Cards cards={cards} />
+        {isLoading ? <CustomLoader /> : <Cards cards={cards} />}
       </div>
     </main>
   );
