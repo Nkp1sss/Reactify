@@ -8,7 +8,7 @@ type TModalInfo = {
   personId: number;
 };
 
-function ModalInfo(props: TModalInfo) {
+function ModalInfo({ personId }: TModalInfo) {
   // инициализировал просто рандомными данными, чтобы ts не ругался
   const [retrievedData, setRetrievedData] = useState<TPeople>({
     id: 1,
@@ -25,11 +25,11 @@ function ModalInfo(props: TModalInfo) {
 
   useEffect(() => {
     setIsLoading(true);
-    getPerson(props.personId).then((data) => {
+    getPerson(personId).then((data) => {
       setRetrievedData(data);
       setIsLoading(false);
     });
-  }, [props.personId]);
+  }, [personId]);
 
   return (
     <>
