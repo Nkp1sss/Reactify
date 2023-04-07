@@ -33,7 +33,6 @@ function Card(props: TPeople) {
   );
 
   const [isModal, setIsModal] = useState(false);
-
   const onClose = () => setIsModal(false);
 
   return (
@@ -47,7 +46,7 @@ function Card(props: TPeople) {
         <PersonInfo {...props} />
         <div className="icons">{socialLinksList}</div>
       </div>
-      <Modal visible={isModal} content={<ModalInfo {...props} />} onClose={onClose} />
+      <Modal visible={isModal} content={<ModalInfo personId={props.id} />} onClose={onClose} />
     </>
   );
 }
