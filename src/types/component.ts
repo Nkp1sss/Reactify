@@ -22,6 +22,7 @@ export type TPeople = {
   facebook?: string;
   twitter?: string;
   photo: string;
+  description: string;
 };
 
 export type TFormCard = {

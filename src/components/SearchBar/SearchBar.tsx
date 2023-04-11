@@ -1,8 +1,12 @@
 import './SearchBar.scss';
 
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-function SearchBar() {
+type TSearchBarProps = {
+  changeSearchValue: (value: string) => void;
+};
+
+function SearchBar(props: TSearchBarProps) {
   const [inputValue, setInputValue] = useState(() => localStorage.getItem('savedValue') || '');
   const actualRef = useRef<string>();
 
@@ -12,11 +16,15 @@ function SearchBar() {
 
   useEffect(() => {
     return function () {
-      if (actualRef.current) {
-        localStorage.setItem('savedValue', actualRef.current);
-      }
+      saveToLocalStorage();
     };
   }, []);
+
+  function saveToLocalStorage() {
+    if (actualRef.current || actualRef.current === '') {
+      localStorage.setItem('savedValue', actualRef.current);
+    }
+  }
 
   return (
     <div className="search__container">
@@ -27,6 +35,12 @@ function SearchBar() {
         placeholder="Search"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            props.changeSearchValue(inputValue);
+            saveToLocalStorage();
+          }
+        }}
       />
     </div>
   );

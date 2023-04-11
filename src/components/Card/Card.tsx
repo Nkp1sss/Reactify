@@ -1,10 +1,14 @@
 import './Card.scss';
 
+import { useState } from 'react';
+
 import instagramLogo from '/instagram.svg';
 import facebookLogo from '/facebook.svg';
 import twitterLogo from '/twitter.svg';
 import { ILinks, TPeople } from '../../types/component';
 import PersonInfo from './PersonInfo';
+import Modal from '../Modal/Modal';
+import ModalInfo from '../Modal/ModalCard';
 
 function Card(props: TPeople) {
   const socialLinks = [
@@ -28,12 +32,22 @@ function Card(props: TPeople) {
       )
   );
 
+  const [isModal, setIsModal] = useState(false);
+  const onClose = () => setIsModal(false);
+
   return (
-    <div className="card" data-testid={`test-${props.id}`}>
-      <img className="photo" src={props.photo} alt="picture" />
-      <PersonInfo {...props} />
-      <div className="icons">{socialLinksList}</div>
-    </div>
+    <>
+      <div className="card" data-testid={`test-${props.id}`} onClick={() => setIsModal(true)}>
+        <img
+          className="photo"
+          src={`https://json-server-6d972uqd4-nkp1sss.vercel.app/${props.photo}`}
+          alt="picture"
+        />
+        <PersonInfo {...props} />
+        <div className="icons">{socialLinksList}</div>
+      </div>
+      <Modal visible={isModal} content={<ModalInfo personId={props.id} />} onClose={onClose} />
+    </>
   );
 }
 
