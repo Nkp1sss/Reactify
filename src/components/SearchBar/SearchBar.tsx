@@ -16,11 +16,15 @@ function SearchBar(props: TSearchBarProps) {
 
   useEffect(() => {
     return function () {
-      if (actualRef.current || actualRef.current === '') {
-        localStorage.setItem('savedValue', actualRef.current);
-      }
+      saveToLocalStorage();
     };
   }, []);
+
+  function saveToLocalStorage() {
+    if (actualRef.current || actualRef.current === '') {
+      localStorage.setItem('savedValue', actualRef.current);
+    }
+  }
 
   return (
     <div className="search__container">
@@ -34,6 +38,7 @@ function SearchBar(props: TSearchBarProps) {
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
             props.changeSearchValue(inputValue);
+            saveToLocalStorage();
           }
         }}
       />
