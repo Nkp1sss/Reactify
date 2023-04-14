@@ -1,36 +1,24 @@
-import React from 'react';
+import { useState } from 'react';
 
 import Form from '../../components/Form/Form';
 import FormCards from '../../components/Form/Cards/FormCards';
 import { TFormCard } from '../../types/component';
 
-type TFormProps = { temp?: string };
-type TFormState = { formCards: TFormCard[] };
+function Forms() {
+  const [formCards, setFormCards] = useState<TFormCard[]>([]);
 
-class Forms extends React.Component<TFormProps, TFormState> {
-  constructor(props: TFormProps) {
-    super(props);
-    this.state = {
-      formCards: [],
-    };
+  function addCard(card: TFormCard) {
+    setFormCards([...formCards, card]);
   }
 
-  addCard(card: TFormCard) {
-    this.setState((prevState: TFormState) => ({
-      formCards: [...prevState.formCards, card],
-    }));
-  }
-
-  render() {
-    return (
-      <main className="forms">
-        <div className="container">
-          <Form addCard={this.addCard.bind(this)} />
-          <FormCards formCards={this.state.formCards} />
-        </div>
-      </main>
-    );
-  }
+  return (
+    <main className="forms">
+      <div className="container">
+        <Form addCard={addCard} />
+        <FormCards formCards={formCards} />
+      </div>
+    </main>
+  );
 }
 
 export default Forms;

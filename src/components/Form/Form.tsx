@@ -9,7 +9,7 @@ type TFormProps = {
   addCard: (card: TFormCard) => void;
 };
 
-function Form(props: TFormProps) {
+function Form({ addCard }: TFormProps) {
   const [imageLink, setImageLink] = useState('');
 
   const {
@@ -33,9 +33,7 @@ function Form(props: TFormProps) {
   const onSubmit = handleSubmit(function (card, event) {
     event?.preventDefault();
 
-    console.log(imageLink);
-
-    props.addCard({
+    addCard({
       ...card,
       picture: imageLink,
     });
