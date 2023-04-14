@@ -1,6 +1,6 @@
 import './Form.scss';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { TFormCard } from '../../types/component';
@@ -10,7 +10,7 @@ type TFormProps = {
 };
 
 function Form(props: TFormProps) {
-  let imageLink = '';
+  const [imageLink, setImageLink] = useState('');
 
   const {
     register,
@@ -22,26 +22,25 @@ function Form(props: TFormProps) {
   function fileInputHandler(e: React.SyntheticEvent<HTMLInputElement>) {
     const target = e.target as HTMLInputElement;
     if (target.files) {
-      imageLink = URL.createObjectURL(target.files[0]);
+      setImageLink(URL.createObjectURL(target.files[0]));
     }
   }
 
   function birthdayValidate(value: string) {
-    console.log(value);
-    console.log(new Date().toLocaleString());
-
     return new Date(value) < new Date();
   }
 
   const onSubmit = handleSubmit(function (card, event) {
     event?.preventDefault();
 
+    console.log(imageLink);
+
     props.addCard({
       ...card,
       picture: imageLink,
     });
 
-    imageLink = '';
+    setImageLink('');
     reset();
   });
 
