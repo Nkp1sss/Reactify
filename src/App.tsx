@@ -19,6 +19,8 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />} />
       <Route path="forms" element={<Forms />} />
       <Route path="*" element={<Notfound />} />
+      {/* <Route path="Notfound" element={<Notfound />} />
+      <Route path="*" element={<Navigate replace to="/Notfound" />} /> */}
     </Route>
   )
 );

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88.88% </span>
+                <span class="strong">91.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>32/36</span>
+                <span class='fraction'>22/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88.88% </span>
+                <span class="strong">91.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>32/36</span>
+                <span class='fraction'>22/24</span>
             </div>
         
             
@@ -87,27 +87,7 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -119,8 +99,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -133,41 +111,27 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState } from 'react';
 &nbsp;
 import Form from '../../components/Form/Form';
 import FormCards from '../../components/Form/Cards/FormCards';
 import { TFormCard } from '../../types/component';
 &nbsp;
-type TFormProps = { temp?: string };
-type TFormState = { formCards: TFormCard[] };
+function Forms() {
+  const [formCards, setFormCards] = useState&lt;TFormCard[]&gt;([]);
 &nbsp;
-class Forms extends React.Component&lt;TFormProps, TFormState&gt; {
-  constructor(props: TFormProps) {
-    super(props);
-    this.state = {
-      formCards: [],
-    };
-  }
-&nbsp;
-<span class="fstat-no" title="function not covered" >  addCard(card: TFormCard) {</span>
-<span class="cstat-no" title="statement not covered" >    this.setState((prevState: TFormState) =&gt; ({</span>
-<span class="cstat-no" title="statement not covered" >      formCards: [...prevState.formCards, card],</span>
-<span class="cstat-no" title="statement not covered" >    }));</span>
+<span class="fstat-no" title="function not covered" >  function addCard(card: TFormCard) {</span>
+<span class="cstat-no" title="statement not covered" >    setFormCards([...formCards, card]);</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
-  render() {
-    return (
-      &lt;main className="forms"&gt;
-        &lt;div className="container"&gt;
-          &lt;Form addCard={this.addCard.bind(this)} /&gt;
-          &lt;FormCards formCards={this.state.formCards} /&gt;
-        &lt;/div&gt;
-      &lt;/main&gt;
-    );
-  }
+  return (
+    &lt;main className="forms"&gt;
+      &lt;div className="container"&gt;
+        &lt;Form addCard={addCard} /&gt;
+        &lt;FormCards formCards={formCards} /&gt;
+      &lt;/div&gt;
+    &lt;/main&gt;
+  );
 }
 &nbsp;
 export default Forms;
@@ -178,7 +142,7 @@ export default Forms;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-04T14:05:34.915Z
+                at 2023-04-14T10:36:15.415Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
