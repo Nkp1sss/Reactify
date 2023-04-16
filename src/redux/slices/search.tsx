@@ -11,11 +11,11 @@ const slice = createSlice({
   name: 'searchValue',
   initialState,
   reducers: {
-    changeSearchValue(state, action: PayloadAction<string>) {
+    changeValue(state, action: PayloadAction<string>) {
       state.searchValue = action.payload;
     },
   },
 });
 
-export const { changeSearchValue } = slice.actions;
+export const { changeValue } = slice.actions;
 export default slice.reducer;

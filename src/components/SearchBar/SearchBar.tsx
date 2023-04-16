@@ -2,12 +2,18 @@ import './SearchBar.scss';
 
 import { useEffect, useRef, useState } from 'react';
 
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { changeValue } from '../../redux/slices/search';
+
 type SearchBarPropsType = {
   changeSearchValue: (value: string) => void;
 };
 
-function SearchBar(props: SearchBarPropsType) {
-  const [inputValue, setInputValue] = useState(() => localStorage.getItem('savedValue') || '');
+function SearchBar({ changeSearchValue }: SearchBarPropsType) {
+  const searchValue = useAppSelector((store) => store.search.searchValue);
+  const dispatch = useAppDispatch();
+
+  const [inputValue, setInputValue] = useState(searchValue);
   const actualRef = useRef<string>();
 
   useEffect(() => {
@@ -16,15 +22,9 @@ function SearchBar(props: SearchBarPropsType) {
 
   useEffect(() => {
     return function () {
-      saveToLocalStorage();
+      dispatch(changeValue(actualRef.current || ''));
     };
   }, []);
-
-  function saveToLocalStorage() {
-    if (actualRef.current || actualRef.current === '') {
-      localStorage.setItem('savedValue', actualRef.current);
-    }
-  }
 
   return (
     <div className="search__container">
@@ -37,8 +37,7 @@ function SearchBar(props: SearchBarPropsType) {
         onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
-            props.changeSearchValue(inputValue);
-            saveToLocalStorage();
+            changeSearchValue(inputValue);
           }
         }}
       />
