@@ -4,12 +4,12 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { FormCardType } from '../../types';
+import { useAppDispatch } from '../../hooks';
+import { addCard } from '../../redux/slices/formCards';
 
-type TFormProps = {
-  addCard: (card: FormCardType) => void;
-};
+function Form() {
+  const dispatch = useAppDispatch();
 
-function Form({ addCard }: TFormProps) {
   const [imageLink, setImageLink] = useState('');
 
   const {
@@ -33,10 +33,12 @@ function Form({ addCard }: TFormProps) {
   const onSubmit = handleSubmit(function (card, event) {
     event?.preventDefault();
 
-    addCard({
-      ...card,
-      picture: imageLink,
-    });
+    dispatch(
+      addCard({
+        ...card,
+        picture: imageLink,
+      })
+    );
 
     setImageLink('');
     reset();

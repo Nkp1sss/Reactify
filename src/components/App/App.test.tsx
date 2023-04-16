@@ -1,4 +1,3 @@
-import { Provider } from 'react-redux';
 import { screen } from '@testing-library/react';
 
 import { renderWithProviders } from '../../tests';
