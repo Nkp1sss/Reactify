@@ -11,7 +11,7 @@ function Cards() {
   const { data, isFetching } = useGetPeoplesQuery(searchValue);
 
   return (
-    <div className="cards">
+    <div className="cards" data-testid={`test`}>
       {isFetching ? (
         <CustomLoader />
       ) : (

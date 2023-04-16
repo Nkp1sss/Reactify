@@ -1,11 +1,12 @@
 import { describe, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import { renderWithProviders } from '../../tests';
 
 import Form from './Form';
 
 describe('Form', () => {
   it('Renders the form correctly', () => {
-    render(<Form addCard={() => console.log(1)} />);
+    renderWithProviders(<Form />);
     const form = screen.getByTestId('form');
     expect(form).toBeInTheDocument();
   });
