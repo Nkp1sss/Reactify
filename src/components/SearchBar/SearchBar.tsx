@@ -5,11 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { changeValue } from '../../redux/slices/search';
 
-type SearchBarPropsType = {
-  changeSearchValue: (value: string) => void;
-};
-
-function SearchBar({ changeSearchValue }: SearchBarPropsType) {
+function SearchBar() {
   const searchValue = useAppSelector((store) => store.search.searchValue);
   const dispatch = useAppDispatch();
 
@@ -37,7 +33,7 @@ function SearchBar({ changeSearchValue }: SearchBarPropsType) {
         onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
-            changeSearchValue(inputValue);
+            dispatch(changeValue(actualRef.current || ''));
           }
         }}
       />

@@ -1,18 +1,22 @@
 import './Cards.scss';
 
-import { PeopleType } from '../../types';
 import Card from './Card/Card';
+import CustomLoader from '../Loader/Loader';
+import { useAppSelector } from '../../hooks';
+import { useGetPeoplesQuery } from '../../redux/slices/cardsAPI';
+import { PeopleType } from '../../types';
 
-type TCards = {
-  cards: PeopleType[];
-};
+function Cards() {
+  const searchValue = useAppSelector((store) => store.search.searchValue);
+  const { data, isFetching } = useGetPeoplesQuery(searchValue);
 
-function Cards(props: TCards) {
   return (
     <div className="cards">
-      {props.cards.map((person) => (
-        <Card key={person.id} {...person} />
-      ))}
+      {isFetching ? (
+        <CustomLoader />
+      ) : (
+        data.map((person: PeopleType) => <Card key={person.id} {...person} />)
+      )}
     </div>
   );
 }
