@@ -9,18 +9,7 @@ type TModalInfo = {
 };
 
 function ModalInfo({ personId }: TModalInfo) {
-  // инициализировал просто рандомными данными, чтобы ts не ругался
-  const [retrievedData, setRetrievedData] = useState<PeopleType>({
-    id: 1,
-    name: 'name',
-    profession: 'profession',
-    company: 'company',
-    age: 1,
-    instagram: 'instagram',
-    twitter: 'twitter',
-    photo: 'photo',
-    description: 'description',
-  });
+  const [retrievedData, setRetrievedData] = useState<Partial<PeopleType>>({});
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
