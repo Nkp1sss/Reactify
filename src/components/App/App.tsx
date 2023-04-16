@@ -1,3 +1,5 @@
+import './App.scss';
+
 import React from 'react';
 import {
   createBrowserRouter,
@@ -12,7 +14,7 @@ import About from '../../pages/About/About';
 import Forms from '../../pages/Forms/Forms';
 import Notfound from '../../pages/Notfound/Notfound';
 
-const router = createBrowserRouter(
+export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />

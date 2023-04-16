@@ -1,11 +1,12 @@
 import { describe, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import { renderWithProviders } from '../../tests';
 
 import Home from './Home';
 
 describe('Home', () => {
   it('Renders the home page', () => {
-    render(<Home />);
+    renderWithProviders(<Home />);
     const searchBarTitle = screen.getByText(/Go ahead, hover over search/);
     expect(searchBarTitle).toBeInTheDocument();
   });

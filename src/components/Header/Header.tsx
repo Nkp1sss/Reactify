@@ -6,11 +6,11 @@ import NavBar from './NavBar/NavBar';
 import { HeaderPropsType } from '../../types';
 import { HeaderTitle, ROUTES } from '../../constants';
 
-export function Header(props: HeaderPropsType) {
+export function Header({ title }: HeaderPropsType) {
   return (
     <header className="header">
       <div className="container">
-        <h3>{props.title}</h3>
+        <h3>{title}</h3>
         <NavBar />
       </div>
     </header>
