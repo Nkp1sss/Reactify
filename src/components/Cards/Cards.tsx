@@ -1,7 +1,7 @@
 import './Cards.scss';
 
 import { PeopleType } from '../../types';
-import Card from '../Card/Card';
+import Card from './Card/Card';
 
 type TCards = {
   cards: PeopleType[];

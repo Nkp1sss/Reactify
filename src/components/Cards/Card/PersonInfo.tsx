@@ -1,4 +1,4 @@
-import { PeopleType } from '../../types';
+import { PeopleType } from '../../../types';
 
 function PersonInfo(props: PeopleType) {
   return (

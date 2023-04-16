@@ -2,7 +2,7 @@ import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
 import Card from './Card';
-import { PeopleType } from '../../types';
+import { PeopleType } from '../../../types';
 
 const peoples: PeopleType[] = [
   {

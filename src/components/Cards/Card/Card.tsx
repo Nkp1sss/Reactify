@@ -5,10 +5,10 @@ import { useState } from 'react';
 import instagramLogo from '/instagram.svg';
 import facebookLogo from '/facebook.svg';
 import twitterLogo from '/twitter.svg';
-import { ILinks, PeopleType } from '../../types';
+import { ILinks, PeopleType } from '../../../types';
 import PersonInfo from './PersonInfo';
-import Modal from '../Modal/Modal';
-import ModalInfo from '../Modal/ModalCard';
+import Modal from '../../Modal/Modal';
+import ModalInfo from '../../Modal/ModalCard';
 
 function Card(props: PeopleType) {
   const socialLinks = [
