@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { getPerson } from '../../api/api';
-import { TPeople } from '../../types/component';
+import { getPerson } from '../../api';
+import { PeopleType } from '../../types';
 import CustomLoader from '../Loader/Loader';
 import './ModalCard.scss';
 
@@ -10,7 +10,7 @@ type TModalInfo = {
 
 function ModalInfo({ personId }: TModalInfo) {
   // инициализировал просто рандомными данными, чтобы ts не ругался
-  const [retrievedData, setRetrievedData] = useState<TPeople>({
+  const [retrievedData, setRetrievedData] = useState<PeopleType>({
     id: 1,
     name: 'name',
     profession: 'profession',

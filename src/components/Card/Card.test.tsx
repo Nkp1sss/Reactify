@@ -2,10 +2,9 @@ import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
 import Card from './Card';
-// import peoples from '../../data/data';
-import { TPeople } from '../../types/component';
+import { PeopleType } from '../../types';
 
-const peoples: TPeople[] = [
+const peoples: PeopleType[] = [
   {
     id: 1,
     name: 'Elon Musk',

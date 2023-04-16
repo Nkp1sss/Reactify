@@ -1,9 +1,9 @@
 import './FormCards.scss';
 
 import FormCard from '../Card/FormCard';
-import { TFormCard } from '../../../types/component';
+import { FormCardType } from '../../../types';
 
-type TFormCardsProps = { formCards: TFormCard[] };
+type TFormCardsProps = { formCards: FormCardType[] };
 
 function FormCards({ formCards }: TFormCardsProps) {
   return (

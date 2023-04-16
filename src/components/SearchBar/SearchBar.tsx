@@ -2,11 +2,11 @@ import './SearchBar.scss';
 
 import { useEffect, useRef, useState } from 'react';
 
-type TSearchBarProps = {
+type SearchBarPropsType = {
   changeSearchValue: (value: string) => void;
 };
 
-function SearchBar(props: TSearchBarProps) {
+function SearchBar(props: SearchBarPropsType) {
   const [inputValue, setInputValue] = useState(() => localStorage.getItem('savedValue') || '');
   const actualRef = useRef<string>();
 

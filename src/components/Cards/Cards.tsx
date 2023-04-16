@@ -1,10 +1,10 @@
 import './Cards.scss';
 
-import { TPeople } from '../../types/component';
+import { PeopleType } from '../../types';
 import Card from '../Card/Card';
 
 type TCards = {
-  cards: TPeople[];
+  cards: PeopleType[];
 };
 
 function Cards(props: TCards) {

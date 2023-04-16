@@ -4,12 +4,12 @@ import CustomLoader from '../../components/Loader/Loader';
 
 import { useEffect, useState } from 'react';
 
-import { TPeople } from '../../types/component';
-import { getPeoples } from '../../api/api';
+import { PeopleType } from '../../types';
+import { getPeoples } from '../../api';
 
 function Home() {
   const [searchValue, setSearchValue] = useState(() => localStorage.getItem('savedValue') || '');
-  const [cards, setCards] = useState<TPeople[]>([]);
+  const [cards, setCards] = useState<PeopleType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {

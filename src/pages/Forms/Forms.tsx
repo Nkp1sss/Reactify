@@ -2,12 +2,12 @@ import { useState } from 'react';
 
 import Form from '../../components/Form/Form';
 import FormCards from '../../components/Form/Cards/FormCards';
-import { TFormCard } from '../../types/component';
+import { FormCardType } from '../../types';
 
 function Forms() {
-  const [formCards, setFormCards] = useState<TFormCard[]>([]);
+  const [formCards, setFormCards] = useState<FormCardType[]>([]);
 
-  function addCard(card: TFormCard) {
+  function addCard(card: FormCardType) {
     setFormCards([...formCards, card]);
   }
 

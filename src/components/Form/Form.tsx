@@ -3,10 +3,10 @@ import './Form.scss';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { TFormCard } from '../../types/component';
+import { FormCardType } from '../../types';
 
 type TFormProps = {
-  addCard: (card: TFormCard) => void;
+  addCard: (card: FormCardType) => void;
 };
 
 function Form({ addCard }: TFormProps) {
@@ -17,7 +17,7 @@ function Form({ addCard }: TFormProps) {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<TFormCard>({ reValidateMode: 'onSubmit' });
+  } = useForm<FormCardType>({ reValidateMode: 'onSubmit' });
 
   function fileInputHandler(e: React.SyntheticEvent<HTMLInputElement>) {
     const target = e.target as HTMLInputElement;

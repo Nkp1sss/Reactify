@@ -1,6 +1,6 @@
-import { TPeople } from '../../types/component';
+import { PeopleType } from '../../types';
 
-function PersonInfo(props: TPeople) {
+function PersonInfo(props: PeopleType) {
   return (
     <>
       <h1 className="fullname">{props.name}</h1>

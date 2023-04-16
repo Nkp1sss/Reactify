@@ -3,10 +3,10 @@ import './Header.scss';
 import { useLocation } from 'react-router-dom';
 
 import NavBar from '../NavBar/NavBar';
-import { THeaderProps } from '../../types/component';
+import { HeaderPropsType } from '../../types';
 import { HeaderTitle, ROUTES } from '../../constants';
 
-export function Header(props: THeaderProps) {
+export function Header(props: HeaderPropsType) {
   return (
     <header className="header">
       <div className="container">

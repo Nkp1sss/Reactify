@@ -1,8 +1,4 @@
-export type TSearchBarState = {
-  inputValue: string;
-};
-
-export type THeaderProps = {
+export type HeaderPropsType = {
   title: string;
 };
 
@@ -12,7 +8,7 @@ export interface ILinks {
   twitter?: string;
 }
 
-export type TPeople = {
+export type PeopleType = {
   id: number;
   name: string;
   profession: string;
@@ -25,7 +21,7 @@ export type TPeople = {
   description: string;
 };
 
-export type TFormCard = {
+export type FormCardType = {
   fullname: string;
   birthday: string;
   favoriteCity: string;
