@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { ROUTES } from '../../constants/appSettings';
+import { ROUTES } from '../../constants';
 
 function NavBar() {
   return (
