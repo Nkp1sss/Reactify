@@ -1,40 +1,30 @@
-import { useEffect, useState } from 'react';
-import { getPerson } from '../../api';
-import { PeopleType } from '../../types';
-import CustomLoader from '../Loader/Loader';
 import './ModalCard.scss';
+
+import { useGetPersonQuery } from '../../redux/slices/cardsAPI';
+import CustomLoader from '../Loader/Loader';
 
 type TModalInfo = {
   personId: number;
 };
 
 function ModalInfo({ personId }: TModalInfo) {
-  const [retrievedData, setRetrievedData] = useState<Partial<PeopleType>>({});
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    setIsLoading(true);
-    getPerson(personId).then((data) => {
-      setRetrievedData(data);
-      setIsLoading(false);
-    });
-  }, [personId]);
+  const { data, isFetching } = useGetPersonQuery(personId);
 
   return (
     <>
-      {isLoading ? (
+      {isFetching ? (
         <CustomLoader />
       ) : (
         <div className="modal-info">
           <img
             className="info-photo"
-            src={`https://json-server-6d972uqd4-nkp1sss.vercel.app/${retrievedData.photo}`}
+            src={`https://json-server-6d972uqd4-nkp1sss.vercel.app/${data.photo}`}
             alt="picture"
           />
-          <p className="info-name">{retrievedData.name}</p>
-          <p className="info-age">{retrievedData.age} years old</p>
-          <p className="info-profession">Work: {retrievedData.profession}</p>
-          <p className="info-description">{retrievedData.description}</p>
+          <p className="info-name">{data.name}</p>
+          <p className="info-age">{data.age} years old</p>
+          <p className="info-profession">Work: {data.profession}</p>
+          <p className="info-description">{data.description}</p>
         </div>
       )}
     </>
