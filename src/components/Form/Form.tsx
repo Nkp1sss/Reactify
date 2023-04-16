@@ -3,13 +3,13 @@ import './Form.scss';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { TFormCard } from '../../types/component';
+import { FormCardType } from '../../types';
+import { useAppDispatch } from '../../hooks';
+import { addCard } from '../../redux/slices/formCards';
 
-type TFormProps = {
-  addCard: (card: TFormCard) => void;
-};
+function Form() {
+  const dispatch = useAppDispatch();
 
-function Form({ addCard }: TFormProps) {
   const [imageLink, setImageLink] = useState('');
 
   const {
@@ -17,7 +17,7 @@ function Form({ addCard }: TFormProps) {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<TFormCard>({ reValidateMode: 'onSubmit' });
+  } = useForm<FormCardType>({ reValidateMode: 'onSubmit' });
 
   function fileInputHandler(e: React.SyntheticEvent<HTMLInputElement>) {
     const target = e.target as HTMLInputElement;
@@ -33,10 +33,12 @@ function Form({ addCard }: TFormProps) {
   const onSubmit = handleSubmit(function (card, event) {
     event?.preventDefault();
 
-    addCard({
-      ...card,
-      picture: imageLink,
-    });
+    dispatch(
+      addCard({
+        ...card,
+        picture: imageLink,
+      })
+    );
 
     setImageLink('');
     reset();

@@ -1,13 +1,13 @@
 import { describe, it } from 'vitest';
-import { render } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 
 import Cards from './Cards';
-import peoples from '../../data/data';
+import { renderWithProviders } from '../../tests';
 
 describe('Cards', () => {
   it('Renders all cards correctly', () => {
-    const { queryAllByTestId } = render(<Cards cards={peoples} />);
-    const allCards = queryAllByTestId(/test/);
-    expect(allCards.length).toBe(peoples.length);
+    renderWithProviders(<Cards />);
+    const cards = screen.queryAllByTestId(/test/);
+    expect(cards.length).toBe(1);
   });
 });

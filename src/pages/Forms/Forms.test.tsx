@@ -1,11 +1,12 @@
 import { describe, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 
 import Forms from './Forms';
+import { renderWithProviders } from '../../tests';
 
 describe('Forms', () => {
   it('Renders the forms page', () => {
-    render(<Forms />);
+    renderWithProviders(<Forms />);
     const input = screen.getByText(/Fullname:/);
     expect(input).toBeInTheDocument();
   });

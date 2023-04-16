@@ -2,15 +2,15 @@ import './Header.scss';
 
 import { useLocation } from 'react-router-dom';
 
-import NavBar from '../NavBar/NavBar';
-import { THeaderProps } from '../../types/component';
-import { HeaderTitle, ROUTES } from '../../constants/appSettings';
+import NavBar from './NavBar/NavBar';
+import { HeaderPropsType } from '../../types';
+import { HeaderTitle, ROUTES } from '../../constants';
 
-export function Header(props: THeaderProps) {
+export function Header({ title }: HeaderPropsType) {
   return (
     <header className="header">
       <div className="container">
-        <h3>{props.title}</h3>
+        <h3>{title}</h3>
         <NavBar />
       </div>
     </header>

@@ -1,14 +1,14 @@
 import './FormCards.scss';
 
 import FormCard from '../Card/FormCard';
-import { TFormCard } from '../../../types/component';
+import { useAppSelector } from '../../../hooks';
 
-type TFormCardsProps = { formCards: TFormCard[] };
+function FormCards() {
+  const cards = useAppSelector((state) => state.formCards.cards);
 
-function FormCards({ formCards }: TFormCardsProps) {
   return (
-    <div className="form-cards">
-      {formCards.map((card, i) => (
+    <div className="form-cards" data-testid="form-cards">
+      {cards.map((card, i) => (
         <FormCard key={i} {...card} />
       ))}
     </div>

@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { getPeoples, getPerson } from './api';
 
-import { TPeople } from '../types/component';
+import { PeopleType } from '../types';
 
 describe('Test API: ', () => {
   beforeEach(() => {
@@ -13,7 +13,7 @@ describe('Test API: ', () => {
   });
 
   it('Test getPeoples: ', async () => {
-    const responsePeoples: TPeople[] = [
+    const responsePeoples: PeopleType[] = [
       {
         id: 1,
         name: 'Elon Musk',
@@ -36,7 +36,7 @@ describe('Test API: ', () => {
     expect(Array.isArray(peoples)).toBe(true);
   });
   it('Test getPerson: ', async () => {
-    const responsePerson: TPeople = {
+    const responsePerson: PeopleType = {
       id: 1,
       name: 'Elon Musk',
       profession: 'CEO',

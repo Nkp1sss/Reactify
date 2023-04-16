@@ -2,10 +2,10 @@ import './FormCard.scss';
 
 import React from 'react';
 
-import { TFormCard } from '../../../types/component';
+import { FormCardType } from '../../../types';
 
-class FormCard extends React.Component<TFormCard> {
-  constructor(props: TFormCard) {
+class FormCard extends React.Component<FormCardType> {
+  constructor(props: FormCardType) {
     super(props);
   }
 
