@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import App from '../components/App/App';
 import store from '../redux';
 
-export default function render(url: string, opts: RenderToPipeableStreamOptions) {
+export function render(url: string, opts: RenderToPipeableStreamOptions) {
   const stream = renderToPipeableStream(
     <Provider store={store}>
       <StaticRouter location={url}>
