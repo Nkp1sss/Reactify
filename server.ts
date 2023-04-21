@@ -43,7 +43,7 @@ const createServer = async () => {
     }
   });
 
-  console.log(`listening on https://localhost:${port}`);
+  console.log(`listening on http://localhost:${port}`);
   app.listen(port);
 };
 
