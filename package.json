@@ -15,8 +15,7 @@
     "coverage": "vitest run --coverage.enabled --coverage.provider=c8 --coverage.all",
     "cypress": "cypress open",
     "test:cypress": "cypress run --e2e",
-    "test:cypress-coverage": "nyc report --reporter=text-summary"
-
+    "test:cypress-coverage": "npm run test:cypress && nyc report --reporter=text-summary"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
@@ -44,6 +43,7 @@
     "@vitejs/plugin-react": "^3.1.0",
     "@vitest/coverage-c8": "^0.29.3",
     "cypress": "^12.10.0",
+    "cypress-file-upload": "^5.0.8",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-react-app": "^7.0.1",
