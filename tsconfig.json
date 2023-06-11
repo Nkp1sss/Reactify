@@ -17,9 +17,16 @@
     "jsx": "react-jsx",
     "noImplicitAny": true,
   },
-  "include": [
-    "vite.config.ts",
-    "src"
-, "tests", "src/types/component.test/.ts"  ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src"],
+  // "include": [
+  //   "vite.config.ts",
+  //   "src",
+  //   "tests",
+  //   "src/types/component.test/.ts"
+  // ],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "ts-node": {
+    "esm": true,
+    "transpileOnly": true
+  }
 }
